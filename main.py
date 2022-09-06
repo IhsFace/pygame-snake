@@ -3,7 +3,7 @@ import sys
 import random
 
 
-class Snake:
+class Snake():
     def __init__(self):
         self.body = [pygame.math.Vector2(5, 10), pygame.math.Vector2(6, 10)]
         self.direction = pygame.math.Vector2(1, 0)
@@ -36,7 +36,7 @@ class Snake:
         self.draw_snake()
 
 
-class Fruit:
+class Fruit():
     def __init__(self):
         self.randomise()
 
@@ -51,10 +51,11 @@ class Fruit:
         self.pos = pygame.math.Vector2(self.x, self.y)
 
 
-class Main:
+class Main():
     def __init__(self):
         self.snake = Snake()
         self.fruit = Fruit()
+        self.eat_sound = pygame.mixer.Sound('assets/eat.wav')
 
     def update(self):
         self.snake.move_snake()
@@ -67,6 +68,7 @@ class Main:
 
     def check_collision(self):
         if self.fruit.pos == self.snake.body[0]:
+            self.eat_sound.play()
             self.snake.score += 1
             self.fruit.randomise()
             self.snake.new_block = True
@@ -94,6 +96,7 @@ class Main:
         self.snake.game_active = True
 
 
+pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
 cell_size = 30
 cell_number = 20
