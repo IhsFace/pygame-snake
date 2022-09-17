@@ -3,7 +3,7 @@ import sys
 import random
 
 
-class Snake():
+class Snake:
     def __init__(self):
         self.body = [pygame.math.Vector2(5, 10), pygame.math.Vector2(6, 10)]
         self.direction = pygame.math.Vector2(1, 0)
@@ -36,7 +36,7 @@ class Snake():
         self.draw_snake()
 
 
-class Fruit():
+class Fruit:
     def __init__(self):
         self.randomise()
 
@@ -51,7 +51,7 @@ class Fruit():
         self.pos = pygame.math.Vector2(self.x, self.y)
 
 
-class Main():
+class Main:
     def __init__(self):
         self.snake = Snake()
         self.fruit = Fruit()
